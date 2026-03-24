@@ -25,7 +25,15 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/material-theme.scss",
+              "src/styles.css",
+              "node_modules/prismjs/themes/prism-okaidia.css"
+            ],
+            "scripts": [
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-css.min.js",
+              "node_modules/prismjs/components/prism-scss.min.js",
+              "node_modules/clipboard/dist/clipboard.min.js"
             ]
           },
           "configurations": {

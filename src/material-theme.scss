@@ -1,0 +1,1603 @@
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$cyan-palette,
+        tertiary: mat.$orange-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+
+:root,
+html,
+:host {
+  @include mat.autocomplete-overrides(
+    (
+      container-shape: var(--custom-container-shape, 4px),
+      container-elevation-shadow: var(
+          --custom-container-elevation-shadow,
+          0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+          0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+          0px 1px 5px 0px rgba(0, 0, 0, 0.12)
+        ),
+      background-color: var(--custom-background-color, #1e1e1e),
+    )
+  );
+
+  @include mat.badge-overrides(
+    (
+      container-offset: var(--custom-container-offset, -12px 0),
+      container-overlap-offset: var(--custom-container-overlap-offset, -12px),
+      container-padding: var(--custom-container-padding, 0 4px),
+      container-shape: var(--custom-container-shape, 9999px),
+      container-size: var(--custom-container-size, 16px),
+      large-size-container-offset: var(--custom-large-size-container-offset, -12px 0),
+      large-size-container-overlap-offset: var(--custom-large-size-container-overlap-offset, -12px),
+      large-size-container-padding: var(--custom-large-size-container-padding, 0 4px),
+      large-size-container-size: var(--custom-large-size-container-size, 16px),
+      legacy-container-size: var(--custom-legacy-container-size, unset),
+      legacy-large-size-container-size: var(--custom-legacy-large-size-container-size, unset),
+      legacy-small-size-container-size: var(--custom-legacy-small-size-container-size, unset),
+      small-size-container-offset: var(--custom-small-size-container-offset, -6px 0),
+      small-size-container-overlap-offset: var(--custom-small-size-container-overlap-offset, -6px),
+      small-size-container-padding: var(--custom-small-size-container-padding, 0),
+      small-size-container-size: var(--custom-small-size-container-size, 6px),
+      background-color: var(--custom-background-color, #f44336),
+      disabled-state-background-color: var(
+          --custom-disabled-state-background-color,
+          rgba(244, 67, 54, 0.38)
+        ),
+      disabled-state-text-color: var(--custom-disabled-state-text-color, #ffffff),
+      text-color: var(--custom-text-color, #ffffff),
+      large-size-line-height: var(--custom-large-size-line-height, 16px),
+      large-size-text-size: var(--custom-large-size-text-size, 11px),
+      line-height: var(--custom-line-height, 16px),
+      small-size-line-height: var(--custom-small-size-line-height, 6px),
+      small-size-text-size: var(--custom-small-size-text-size, 0),
+      text-font: var(--custom-text-font, 'Roboto, sans-serif'),
+      text-size: var(--custom-text-size, 11px),
+      text-weight: var(--custom-text-weight, 500),
+    )
+  );
+
+  @include mat.bottom-sheet-overrides(
+    (
+      container-shape: var(--custom-container-shape, 28px),
+      container-text-color: var(--custom-container-text-color, #e0e0e0),
+      container-background-color: var(--custom-container-background-color, #1e1e1e),
+      container-text-font: var(--custom-container-text-font, Roboto, sans-serif),
+      container-text-size: var(--custom-container-text-size, 16px),
+      container-text-weight: var(--custom-container-text-weight, 400),
+    )
+  );
+
+  @include mat.fab-overrides(
+    (
+      container-shape: var(--custom-container-shape, 16px),
+      extended-container-height: var(--custom-extended-container-height, 56px),
+      extended-container-shape: var(--custom-extended-container-shape, 16px),
+      small-container-shape: var(--custom-small-container-shape, 12px),
+      touch-target-size: var(--custom-touch-target-size, 48px),
+      small-touch-target-size: var(--custom-small-touch-target-size, 48px),
+      container-color: var(--custom-container-color, #d0bcff),
+      container-elevation-shadow: var(--custom-container-elevation-shadow, 3),
+      disabled-state-container-color: var(
+          --custom-disabled-state-container-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      disabled-state-foreground-color: var(
+          --custom-disabled-state-foreground-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      extended-container-elevation-shadow: var(--custom-extended-container-elevation-shadow, 3),
+      extended-focus-container-elevation-shadow: var(
+          --custom-extended-focus-container-elevation-shadow,
+          3
+        ),
+      extended-hover-container-elevation-shadow: var(
+          --custom-extended-hover-container-elevation-shadow,
+          4
+        ),
+      extended-pressed-container-elevation-shadow: var(
+          --custom-extended-pressed-container-elevation-shadow,
+          3
+        ),
+      focus-container-elevation-shadow: var(--custom-focus-container-elevation-shadow, 3),
+      focus-state-layer-opacity: var(--custom-focus-state-layer-opacity, 0.12),
+      foreground-color: var(--custom-foreground-color, #1c1b1f),
+      hover-container-elevation-shadow: var(--custom-hover-container-elevation-shadow, 4),
+      hover-state-layer-opacity: var(--custom-hover-state-layer-opacity, 0.08),
+      pressed-container-elevation-shadow: var(--custom-pressed-container-elevation-shadow, 3),
+      pressed-state-layer-opacity: var(--custom-pressed-state-layer-opacity, 0.12),
+      ripple-color: var(--custom-ripple-color, #1c1b1f),
+      small-container-color: var(--custom-small-container-color, #d0bcff),
+      small-container-elevation-shadow: var(--custom-small-container-elevation-shadow, 3),
+      small-disabled-state-container-color: var(
+          --custom-small-disabled-state-container-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      small-disabled-state-foreground-color: var(
+          --custom-small-disabled-state-foreground-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      small-focus-container-elevation-shadow: var(
+          --custom-small-focus-container-elevation-shadow,
+          3
+        ),
+      small-focus-state-layer-opacity: var(--custom-small-focus-state-layer-opacity, 0.12),
+      small-foreground-color: var(--custom-small-foreground-color, #1c1b1f),
+      small-hover-container-elevation-shadow: var(
+          --custom-small-hover-container-elevation-shadow,
+          4
+        ),
+      small-hover-state-layer-opacity: var(--custom-small-hover-state-layer-opacity, 0.08),
+      small-pressed-container-elevation-shadow: var(
+          --custom-small-pressed-container-elevation-shadow,
+          3
+        ),
+      small-pressed-state-layer-opacity: var(--custom-small-pressed-state-layer-opacity, 0.12),
+      small-ripple-color: var(--custom-small-ripple-color, #1c1b1f),
+      small-state-layer-color: var(--custom-small-state-layer-color, #1c1b1f),
+      state-layer-color: var(--custom-state-layer-color, #1c1b1f),
+      disabled-state-layer-color: var(
+          --custom-disabled-state-layer-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      small-disabled-state-layer-color: var(
+          --custom-small-disabled-state-layer-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      extended-label-text-font: var(--custom-extended-label-text-font, Roboto, sans-serif),
+      extended-label-text-size: var(--custom-extended-label-text-size, 14px),
+      extended-label-text-tracking: var(--custom-extended-label-text-tracking, 0.1px),
+      extended-label-text-weight: var(--custom-extended-label-text-weight, 500),
+      small-touch-target-display: var(--custom-small-touch-target-display, block),
+      touch-target-display: var(--custom-touch-target-display, block),
+    )
+  );
+
+  @include mat.icon-button-overrides(
+    (
+      icon-size: var(--custom-icon-size, 24px),
+      container-shape: var(--custom-container-shape, 9999px),
+      touch-target-size: var(--custom-touch-target-size, 48px),
+      disabled-icon-color: var(--custom-disabled-icon-color, rgba(227, 227, 227, 0.38)),
+      disabled-state-layer-color: var(
+          --custom-disabled-state-layer-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      focus-state-layer-opacity: var(--custom-focus-state-layer-opacity, 0.12),
+      hover-state-layer-opacity: var(--custom-hover-state-layer-opacity, 0.08),
+      icon-color: var(--custom-icon-color, #49454f),
+      pressed-state-layer-opacity: var(--custom-pressed-state-layer-opacity, 0.12),
+      ripple-color: var(--custom-ripple-color, #49454f),
+      state-layer-color: var(--custom-state-layer-color, #49454f),
+      touch-target-display: var(--custom-touch-target-display, block),
+      state-layer-size: var(--custom-state-layer-size, 40px),
+    )
+  );
+
+  @include mat.button-overrides(
+    (
+      filled-container-shape: var(--custom-filled-container-shape, 9999px),
+      filled-horizontal-padding: var(--custom-filled-horizontal-padding, 24px),
+      filled-icon-offset: var(--custom-filled-icon-offset, -8px),
+      filled-icon-spacing: var(--custom-filled-icon-spacing, 8px),
+      filled-label-text-transform: var(--custom-filled-label-text-transform, none),
+      filled-touch-target-size: var(--custom-filled-touch-target-size, 48px),
+      outlined-container-shape: var(--custom-outlined-container-shape, 9999px),
+      outlined-horizontal-padding: var(--custom-outlined-horizontal-padding, 24px),
+      outlined-icon-offset: var(--custom-outlined-icon-offset, -8px),
+      outlined-icon-spacing: var(--custom-outlined-icon-spacing, 8px),
+      outlined-outline-width: var(--custom-outlined-outline-width, 1px),
+      outlined-label-text-transform: var(--custom-outlined-label-text-transform, none),
+      outlined-touch-target-size: var(--custom-outlined-touch-target-size, 48px),
+      protected-container-shape: var(--custom-protected-container-shape, 9999px),
+      protected-horizontal-padding: var(--custom-protected-horizontal-padding, 24px),
+      protected-icon-offset: var(--custom-protected-icon-offset, -8px),
+      protected-icon-spacing: var(--custom-protected-icon-spacing, 8px),
+      protected-label-text-transform: var(--custom-protected-label-text-transform, none),
+      protected-touch-target-size: var(--custom-protected-touch-target-size, 48px),
+      text-container-shape: var(--custom-text-container-shape, 9999px),
+      text-horizontal-padding: var(--custom-text-horizontal-padding, 12px),
+      text-icon-offset: var(--custom-text-icon-offset, -4px),
+      text-icon-spacing: var(--custom-text-icon-spacing, 8px),
+      text-with-icon-horizontal-padding: var(--custom-text-with-icon-horizontal-padding, 16px),
+      text-label-text-transform: var(--custom-text-label-text-transform, none),
+      text-touch-target-size: var(--custom-text-touch-target-size, 48px),
+      tonal-container-shape: var(--custom-tonal-container-shape, 9999px),
+      tonal-horizontal-padding: var(--custom-tonal-horizontal-padding, 24px),
+      tonal-icon-offset: var(--custom-tonal-icon-offset, -8px),
+      tonal-icon-spacing: var(--custom-tonal-icon-spacing, 8px),
+      tonal-label-text-transform: var(--custom-tonal-label-text-transform, none),
+      tonal-touch-target-size: var(--custom-tonal-touch-target-size, 48px),
+      filled-container-color: var(--custom-filled-container-color, #6750a4),
+      filled-disabled-container-color: var(
+          --custom-filled-disabled-container-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      filled-disabled-label-text-color: var(
+          --custom-filled-disabled-label-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      filled-disabled-state-layer-color: var(
+          --custom-filled-disabled-state-layer-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      filled-focus-state-layer-opacity: var(--custom-filled-focus-state-layer-opacity, 0.12),
+      filled-hover-state-layer-opacity: var(--custom-filled-hover-state-layer-opacity, 0.08),
+      filled-label-text-color: var(--custom-filled-label-text-color, #ffffff),
+      filled-pressed-state-layer-opacity: var(--custom-filled-pressed-state-layer-opacity, 0.12),
+      filled-ripple-color: var(--custom-filled-ripple-color, #ffffff),
+      filled-state-layer-color: var(--custom-filled-state-layer-color, #ffffff),
+      outlined-disabled-label-text-color: var(
+          --custom-outlined-disabled-label-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      outlined-disabled-outline-color: var(
+          --custom-outlined-disabled-outline-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      outlined-disabled-state-layer-color: var(
+          --custom-outlined-disabled-state-layer-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      outlined-focus-state-layer-opacity: var(--custom-outlined-focus-state-layer-opacity, 0.12),
+      outlined-hover-state-layer-opacity: var(--custom-outlined-hover-state-layer-opacity, 0.08),
+      outlined-label-text-color: var(--custom-outlined-label-text-color, #6750a4),
+      outlined-outline-color: var(--custom-outlined-outline-color, #79747e),
+      outlined-pressed-state-layer-opacity: var(--custom-outlined-pressed-state-layer-opacity, 0.12),
+      outlined-ripple-color: var(--custom-outlined-ripple-color, #6750a4),
+      outlined-state-layer-color: var(--custom-outlined-state-layer-color, #6750a4),
+      protected-container-color: var(--custom-protected-container-color, #fffbfe),
+      protected-container-elevation-shadow: var(--custom-protected-container-elevation-shadow, 1),
+      protected-disabled-container-color: var(
+          --custom-protected-disabled-container-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      protected-disabled-container-elevation-shadow: var(
+          --custom-protected-disabled-container-elevation-shadow,
+          0
+        ),
+      protected-disabled-label-text-color: var(
+          --custom-protected-disabled-label-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      protected-disabled-state-layer-color: var(
+          --custom-protected-disabled-state-layer-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      protected-focus-container-elevation-shadow: var(
+          --custom-protected-focus-container-elevation-shadow,
+          1
+        ),
+      protected-focus-state-layer-opacity: var(--custom-protected-focus-state-layer-opacity, 0.12),
+      protected-hover-container-elevation-shadow: var(
+          --custom-protected-hover-container-elevation-shadow,
+          2
+        ),
+      protected-hover-state-layer-opacity: var(--custom-protected-hover-state-layer-opacity, 0.08),
+      protected-label-text-color: var(--custom-protected-label-text-color, #6750a4),
+      protected-pressed-container-elevation-shadow: var(
+          --custom-protected-pressed-container-elevation-shadow,
+          1
+        ),
+      protected-pressed-state-layer-opacity: var(
+          --custom-protected-pressed-state-layer-opacity,
+          0.12
+        ),
+      protected-ripple-color: var(--custom-protected-ripple-color, #6750a4),
+      protected-state-layer-color: var(--custom-protected-state-layer-color, #6750a4),
+      text-disabled-label-text-color: var(
+          --custom-text-disabled-label-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      text-disabled-state-layer-color: var(
+          --custom-text-disabled-state-layer-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      text-focus-state-layer-opacity: var(--custom-text-focus-state-layer-opacity, 0.12),
+      text-hover-state-layer-opacity: var(--custom-text-hover-state-layer-opacity, 0.08),
+      text-label-text-color: var(--custom-text-label-text-color, #6750a4),
+      text-pressed-state-layer-opacity: var(--custom-text-pressed-state-layer-opacity, 0.12),
+      text-ripple-color: var(--custom-text-ripple-color, #6750a4),
+      text-state-layer-color: var(--custom-text-state-layer-color, #6750a4),
+      tonal-container-color: var(--custom-tonal-container-color, #e8def8),
+      tonal-disabled-container-color: var(
+          --custom-tonal-disabled-container-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      tonal-disabled-label-text-color: var(
+          --custom-tonal-disabled-label-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      tonal-disabled-state-layer-color: var(
+          --custom-tonal-disabled-state-layer-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      tonal-focus-state-layer-opacity: var(--custom-tonal-focus-state-layer-opacity, 0.12),
+      tonal-hover-state-layer-opacity: var(--custom-tonal-hover-state-layer-opacity, 0.08),
+      tonal-label-text-color: var(--custom-tonal-label-text-color, #ffffff),
+      tonal-pressed-state-layer-opacity: var(--custom-tonal-pressed-state-layer-opacity, 0.12),
+      tonal-ripple-color: var(--custom-tonal-ripple-color, #1c1b1f),
+      tonal-state-layer-color: var(--custom-tonal-state-layer-color, #1c1b1f),
+      filled-label-text-font: var(--custom-filled-label-text-font, Roboto, sans-serif),
+      filled-label-text-size: var(--custom-filled-label-text-size, 14px),
+      filled-label-text-tracking: var(--custom-filled-label-text-tracking, 0.1px),
+      filled-label-text-weight: var(--custom-filled-label-text-weight, 500),
+      outlined-label-text-font: var(--custom-outlined-label-text-font, Roboto, sans-serif),
+      outlined-label-text-size: var(--custom-outlined-label-text-size, 14px),
+      outlined-label-text-tracking: var(--custom-outlined-label-text-tracking, 0.1px),
+      outlined-label-text-weight: var(--custom-outlined-label-text-weight, 500),
+      protected-label-text-font: var(--custom-protected-label-text-font, Roboto, sans-serif),
+      protected-label-text-size: var(--custom-protected-label-text-size, 14px),
+      protected-label-text-tracking: var(--custom-protected-label-text-tracking, 0.1px),
+      protected-label-text-weight: var(--custom-protected-label-text-weight, 500),
+      text-label-text-font: var(--custom-text-label-text-font, Roboto, sans-serif),
+      text-label-text-size: var(--custom-text-label-text-size, 14px),
+      text-label-text-tracking: var(--custom-text-label-text-tracking, 0.1px),
+      text-label-text-weight: var(--custom-text-label-text-weight, 500),
+      tonal-label-text-font: var(--custom-tonal-label-text-font, Roboto, sans-serif),
+      tonal-label-text-size: var(--custom-tonal-label-text-size, 14px),
+      tonal-label-text-tracking: var(--custom-tonal-label-text-tracking, 0.1px),
+      tonal-label-text-weight: var(--custom-tonal-label-text-weight, 500),
+      filled-touch-target-display: var(--custom-filled-touch-target-display, block),
+      filled-container-height: var(--custom-filled-container-height, 40px),
+      outlined-container-height: var(--custom-outlined-container-height, 40px),
+      outlined-touch-target-display: var(--custom-outlined-touch-target-display, block),
+      protected-touch-target-display: var(--custom-protected-touch-target-display, block),
+      protected-container-height: var(--custom-protected-container-height, 40px),
+      text-touch-target-display: var(--custom-text-touch-target-display, block),
+      text-container-height: var(--custom-text-container-height, 40px),
+      tonal-container-height: var(--custom-tonal-container-height, 40px),
+      tonal-touch-target-display: var(--custom-tonal-touch-target-display, block),
+    )
+  );
+
+  @include mat.button-toggle-overrides(
+    (
+      focus-state-layer-opacity: var(--custom-focus-state-layer-opacity, 0.12),
+      hover-state-layer-opacity: var(--custom-hover-state-layer-opacity, 0.08),
+      shape: var(--custom-shape, 28px),
+      legacy-shape: var(--custom-legacy-shape, 4px),
+      legacy-focus-state-layer-opacity: var(--custom-legacy-focus-state-layer-opacity, 0.12),
+      legacy-height: var(--custom-legacy-height, 36px),
+      background-color: var(--custom-background-color, transparent),
+      disabled-selected-state-background-color: var(
+          --custom-disabled-selected-state-background-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      disabled-selected-state-text-color: var(
+          --custom-disabled-selected-state-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      disabled-state-background-color: var(--custom-disabled-state-background-color, transparent),
+      disabled-state-text-color: var(--custom-disabled-state-text-color, rgba(227, 227, 227, 0.38)),
+      divider-color: var(--custom-divider-color, #79747e),
+      selected-state-background-color: var(--custom-selected-state-background-color, #e8def8),
+      selected-state-text-color: var(--custom-selected-state-text-color, #ffffff),
+      state-layer-color: var(--custom-state-layer-color, #1c1b1f),
+      text-color: var(--custom-text-color, #ffffff),
+      legacy-disabled-selected-state-background-color: var(
+          --custom-legacy-disabled-selected-state-background-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      legacy-disabled-state-background-color: var(
+          --custom-legacy-disabled-state-background-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      legacy-disabled-state-text-color: var(
+          --custom-legacy-disabled-state-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      legacy-selected-state-background-color: var(
+          --custom-legacy-selected-state-background-color,
+          #e8def8
+        ),
+      legacy-selected-state-text-color: var(--custom-legacy-selected-state-text-color, #ffffff),
+      legacy-state-layer-color: var(--custom-legacy-state-layer-color, #1c1b1f),
+      legacy-text-color: var(--custom-legacy-text-color, #ffffff),
+      label-text-font: var(--custom-label-text-font, Roboto, sans-serif),
+      label-text-line-height: var(--custom-label-text-line-height, 20px),
+      label-text-size: var(--custom-label-text-size, 14px),
+      label-text-tracking: var(--custom-label-text-tracking, 0.1px),
+      label-text-weight: var(--custom-label-text-weight, 500),
+      legacy-label-text-font: var(--custom-legacy-label-text-font, Roboto, sans-serif),
+      legacy-label-text-line-height: var(--custom-legacy-label-text-line-height, 20px),
+      legacy-label-text-size: var(--custom-legacy-label-text-size, 14px),
+      legacy-label-text-tracking: var(--custom-legacy-label-text-tracking, 0.1px),
+      legacy-label-text-weight: var(--custom-legacy-label-text-weight, 500),
+      height: var(--custom-height, 40px),
+    )
+  );
+
+  @include mat.card-overrides(
+    (
+      elevated-container-shape: var(--custom-elevated-container-shape, 12px),
+      filled-container-shape: var(--custom-filled-container-shape, 12px),
+      outlined-container-shape: var(--custom-outlined-container-shape, 12px),
+      outlined-outline-width: var(--custom-outlined-outline-width, 1px),
+      elevated-container-color: var(--custom-elevated-container-color, #f7f2fa),
+      elevated-container-elevation: var(--custom-elevated-container-elevation, 1),
+      filled-container-color: var(--custom-filled-container-color, #e6e1e5),
+      filled-container-elevation: var(--custom-filled-container-elevation, 0),
+      outlined-container-color: var(--custom-outlined-container-color, #fffbfe),
+      outlined-container-elevation: var(--custom-outlined-container-elevation, 0),
+      outlined-outline-color: var(--custom-outlined-outline-color, #cac4d0),
+      subtitle-text-color: var(--custom-subtitle-text-color, #ffffff),
+      subtitle-text-font: var(--custom-subtitle-text-font, Roboto, sans-serif),
+      subtitle-text-line-height: var(--custom-subtitle-text-line-height, 24px),
+      subtitle-text-size: var(--custom-subtitle-text-size, 16px),
+      subtitle-text-tracking: var(--custom-subtitle-text-tracking, 0.15px),
+      subtitle-text-weight: var(--custom-subtitle-text-weight, 500),
+      title-text-font: var(--custom-title-text-font, Roboto, sans-serif),
+      title-text-line-height: var(--custom-title-text-line-height, 28px),
+      title-text-size: var(--custom-title-text-size, 22px),
+      title-text-tracking: var(--custom-title-text-tracking, 0px),
+      title-text-weight: var(--custom-title-text-weight, 400),
+    )
+  );
+
+  @include mat.checkbox-overrides(
+    (
+      selected-focus-state-layer-opacity: var(--custom-selected-focus-state-layer-opacity, 0.12),
+      selected-hover-state-layer-opacity: var(--custom-selected-hover-state-layer-opacity, 0.08),
+      selected-pressed-state-layer-opacity: var(--custom-selected-pressed-state-layer-opacity, 0.12),
+      unselected-focus-state-layer-opacity: var(--custom-unselected-focus-state-layer-opacity, 0.12),
+      unselected-hover-state-layer-opacity: var(--custom-unselected-hover-state-layer-opacity, 0.08),
+      unselected-pressed-state-layer-opacity: var(
+          --custom-unselected-pressed-state-layer-opacity,
+          0.12
+        ),
+      touch-target-size: var(--custom-touch-target-size, 48px),
+      disabled-label-color: var(--custom-disabled-label-color, rgba(227, 227, 227, 0.38)),
+      disabled-selected-checkmark-color: var(--custom-disabled-selected-checkmark-color, #fffbfe),
+      disabled-selected-icon-color: var(
+          --custom-disabled-selected-icon-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      disabled-unselected-icon-color: var(
+          --custom-disabled-unselected-icon-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      label-text-color: var(--custom-label-text-color, #ffffff),
+      selected-checkmark-color: var(--custom-selected-checkmark-color, #ffffff),
+      selected-focus-icon-color: var(--custom-selected-focus-icon-color, #6750a4),
+      selected-focus-state-layer-color: var(--custom-selected-focus-state-layer-color, #6750a4),
+      selected-hover-icon-color: var(--custom-selected-hover-icon-color, #6750a4),
+      selected-hover-state-layer-color: var(--custom-selected-hover-state-layer-color, #6750a4),
+      selected-icon-color: var(--custom-selected-icon-color, #6750a4),
+      selected-pressed-icon-color: var(--custom-selected-pressed-icon-color, #6750a4),
+      selected-pressed-state-layer-color: var(--custom-selected-pressed-state-layer-color, #1c1b1f),
+      unselected-focus-icon-color: var(--custom-unselected-focus-icon-color, #1c1b1f),
+      unselected-focus-state-layer-color: var(--custom-unselected-focus-state-layer-color, #1c1b1f),
+      unselected-hover-icon-color: var(--custom-unselected-hover-icon-color, #1c1b1f),
+      unselected-hover-state-layer-color: var(--custom-unselected-hover-state-layer-color, #1c1b1f),
+      unselected-icon-color: var(--custom-unselected-icon-color, #49454f),
+      unselected-pressed-state-layer-color: var(
+          --custom-unselected-pressed-state-layer-color,
+          #6750a4
+        ),
+      label-text-font: var(--custom-label-text-font, Roboto, sans-serif),
+      label-text-line-height: var(--custom-label-text-line-height, 20px),
+      label-text-size: var(--custom-label-text-size, 14px),
+      label-text-tracking: var(--custom-label-text-tracking, 0.25px),
+      label-text-weight: var(--custom-label-text-weight, 400),
+      touch-target-display: var(--custom-touch-target-display, block),
+      state-layer-size: var(--custom-state-layer-size, 40px),
+    )
+  );
+
+  @include mat.chips-overrides(
+    (
+      container-shape-radius: var(--custom-container-shape-radius, 8px),
+      disabled-container-opacity: var(--custom-disabled-container-opacity, 1),
+      elevated-container-color: var(--custom-elevated-container-color, #ffffff),
+      flat-selected-outline-width: var(--custom-flat-selected-outline-width, 0px),
+      outline-width: var(--custom-outline-width, 1px),
+      trailing-action-focus-opacity: var(--custom-trailing-action-focus-opacity, 1),
+      trailing-action-opacity: var(--custom-trailing-action-opacity, 1),
+      with-avatar-avatar-shape-radius: var(--custom-with-avatar-avatar-shape-radius, 24px),
+      with-avatar-avatar-size: var(--custom-with-avatar-avatar-size, 24px),
+      with-avatar-disabled-avatar-opacity: var(--custom-with-avatar-disabled-avatar-opacity, 0.38),
+      with-icon-disabled-icon-opacity: var(--custom-with-icon-disabled-icon-opacity, 0.38),
+      with-icon-icon-size: var(--custom-with-icon-icon-size, 18px),
+      with-trailing-icon-disabled-trailing-icon-opacity: var(
+          --custom-with-trailing-icon-disabled-trailing-icon-opacity,
+          0.38
+        ),
+      disabled-label-text-color: var(--custom-disabled-label-text-color, rgba(227, 227, 227, 0.38)),
+      disabled-outline-color: var(--custom-disabled-outline-color, rgba(227, 227, 227, 0.12)),
+      elevated-selected-container-color: var(--custom-elevated-selected-container-color, #e8def8),
+      flat-disabled-selected-container-color: var(
+          --custom-flat-disabled-selected-container-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      focus-outline-color: var(--custom-focus-outline-color, #49454f),
+      focus-state-layer-color: var(--custom-focus-state-layer-color, #49454f),
+      focus-state-layer-opacity: var(--custom-focus-state-layer-opacity, 0.12),
+      hover-state-layer-color: var(--custom-hover-state-layer-color, #49454f),
+      hover-state-layer-opacity: var(--custom-hover-state-layer-opacity, 0.08),
+      label-text-color: var(--custom-label-text-color, #49454f),
+      outline-color: var(--custom-outline-color, #79747e),
+      selected-disabled-trailing-icon-color: var(
+          --custom-selected-disabled-trailing-icon-color,
+          #1c1b1f
+        ),
+      selected-focus-state-layer-color: var(--custom-selected-focus-state-layer-color, #1c1b1f),
+      selected-focus-state-layer-opacity: var(--custom-selected-focus-state-layer-opacity, 0.12),
+      selected-hover-state-layer-color: var(--custom-selected-hover-state-layer-color, #1c1b1f),
+      selected-hover-state-layer-opacity: var(--custom-selected-hover-state-layer-opacity, 0.08),
+      selected-label-text-color: var(--custom-selected-label-text-color, #ffffff),
+      selected-trailing-action-state-layer-color: var(
+          --custom-selected-trailing-action-state-layer-color,
+          #1c1b1f
+        ),
+      selected-trailing-icon-color: var(--custom-selected-trailing-icon-color, #1c1b1f),
+      trailing-action-focus-state-layer-opacity: var(
+          --custom-trailing-action-focus-state-layer-opacity,
+          0.12
+        ),
+      trailing-action-hover-state-layer-opacity: var(
+          --custom-trailing-action-hover-state-layer-opacity,
+          0.08
+        ),
+      trailing-action-state-layer-color: var(--custom-trailing-action-state-layer-color, #49454f),
+      with-icon-disabled-icon-color: var(--custom-with-icon-disabled-icon-color, #1c1b1f),
+      with-icon-icon-color: var(--custom-with-icon-icon-color, #49454f),
+      with-icon-selected-icon-color: var(--custom-with-icon-selected-icon-color, #1c1b1f),
+      with-trailing-icon-disabled-trailing-icon-color: var(
+          --custom-with-trailing-icon-disabled-trailing-icon-color,
+          #1c1b1f
+        ),
+      with-trailing-icon-trailing-icon-color: var(
+          --custom-with-trailing-icon-trailing-icon-color,
+          #49454f
+        ),
+      elevated-disabled-container-color: var(
+          --custom-elevated-disabled-container-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      label-text-font: var(--custom-label-text-font, Roboto, sans-serif),
+      label-text-line-height: var(--custom-label-text-line-height, 20px),
+      label-text-size: var(--custom-label-text-size, 14px),
+      label-text-tracking: var(--custom-label-text-tracking, 0.1px),
+      label-text-weight: var(--custom-label-text-weight, 500),
+      container-height: var(--custom-container-height, 32px),
+    )
+  );
+
+  @include mat.ripple-overrides(
+    (
+      color: var(--custom-color, rgba(28, 27, 31, 0.1)),
+    )
+  );
+
+  @include mat.optgroup-overrides(
+    (
+      label-text-color: var(--custom-label-text-color, #49454f),
+      label-text-font: var(--custom-label-text-font, Roboto, sans-serif),
+      label-text-line-height: var(--custom-label-text-line-height, 20px),
+      label-text-size: var(--custom-label-text-size, 14px),
+      label-text-tracking: var(--custom-label-text-tracking, 0.1px),
+      label-text-weight: var(--custom-label-text-weight, 500),
+    )
+  );
+
+  @include mat.option-overrides(
+    (
+      focus-state-layer-color: var(--custom-focus-state-layer-color, rgba(28, 27, 31, 0.12)),
+      hover-state-layer-color: var(--custom-hover-state-layer-color, rgba(28, 27, 31, 0.08)),
+      label-text-color: var(--custom-label-text-color, #ffffff),
+      selected-state-label-text-color: var(--custom-selected-state-label-text-color, #ffffff),
+      selected-state-layer-color: var(--custom-selected-state-layer-color, #e8def8),
+      label-text-size: var(--custom-label-text-size, 16px),
+      label-text-weight: var(--custom-label-text-weight, 400),
+      label-text-font: var(--custom-label-text-font, Roboto, sans-serif),
+      label-text-line-height: var(--custom-label-text-line-height, 20px),
+      label-text-tracking: var(--custom-label-text-tracking, 0.1px),
+    )
+  );
+
+  @include mat.pseudo-checkbox-overrides(
+    (
+      full-disabled-selected-checkmark-color: var(
+          --custom-full-disabled-selected-checkmark-color,
+          #fffbfe
+        ),
+      full-disabled-selected-icon-color: var(
+          --custom-full-disabled-selected-icon-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      full-disabled-unselected-icon-color: var(
+          --custom-full-disabled-unselected-icon-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      full-selected-checkmark-color: var(--custom-full-selected-checkmark-color, #ffffff),
+      full-selected-icon-color: var(--custom-full-selected-icon-color, #6750a4),
+      full-unselected-icon-color: var(--custom-full-unselected-icon-color, #49454f),
+      minimal-disabled-selected-checkmark-color: var(
+          --custom-minimal-disabled-selected-checkmark-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      minimal-selected-checkmark-color: var(--custom-minimal-selected-checkmark-color, #6750a4),
+    )
+  );
+
+  @include mat.datepicker-overrides(
+    (
+      calendar-container-elevation-shadow: var(--custom-calendar-container-elevation-shadow, 0),
+      calendar-container-shape: var(--custom-calendar-container-shape, 16px),
+      calendar-container-touch-elevation-shadow: var(
+          --custom-calendar-container-touch-elevation-shadow,
+          0
+        ),
+      calendar-container-touch-shape: var(--custom-calendar-container-touch-shape, 28px),
+      calendar-body-label-text-color: var(--custom-calendar-body-label-text-color, #ffffff),
+      calendar-container-background-color: var(
+          --custom-calendar-container-background-color,
+          #ece6f0
+        ),
+      calendar-container-text-color: var(--custom-calendar-container-text-color, #ffffff),
+      calendar-date-disabled-state-text-color: var(
+          --custom-calendar-date-disabled-state-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      calendar-date-focus-state-background-color: var(
+          --custom-calendar-date-focus-state-background-color,
+          rgba(28, 27, 31, 0.12)
+        ),
+      calendar-date-hover-state-background-color: var(
+          --custom-calendar-date-hover-state-background-color,
+          rgba(28, 27, 31, 0.08)
+        ),
+      calendar-date-in-comparison-range-state-background-color: var(
+          --custom-calendar-date-in-comparison-range-state-background-color,
+          #ffd8e4
+        ),
+      calendar-date-in-overlap-range-selected-state-background-color: var(
+          --custom-calendar-date-in-overlap-range-selected-state-background-color,
+          #625b71
+        ),
+      calendar-date-in-overlap-range-state-background-color: var(
+          --custom-calendar-date-in-overlap-range-state-background-color,
+          #e8def8
+        ),
+      calendar-date-in-range-state-background-color: var(
+          --custom-calendar-date-in-range-state-background-color,
+          #eaddff
+        ),
+      calendar-date-outline-color: var(--custom-calendar-date-outline-color, transparent),
+      calendar-date-preview-state-outline-color: var(
+          --custom-calendar-date-preview-state-outline-color,
+          #6750a4
+        ),
+      calendar-date-selected-disabled-state-background-color: var(
+          --custom-calendar-date-selected-disabled-state-background-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      calendar-date-selected-state-background-color: var(
+          --custom-calendar-date-selected-state-background-color,
+          #6750a4
+        ),
+      calendar-date-selected-state-text-color: var(
+          --custom-calendar-date-selected-state-text-color,
+          #ffffff
+        ),
+      calendar-date-text-color: var(--custom-calendar-date-text-color, #ffffff),
+      calendar-date-today-disabled-state-outline-color: var(
+          --custom-calendar-date-today-disabled-state-outline-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      calendar-date-today-outline-color: var(--custom-calendar-date-today-outline-color, #6750a4),
+      calendar-date-today-selected-state-outline-color: var(
+          --custom-calendar-date-today-selected-state-outline-color,
+          #6750a4
+        ),
+      calendar-header-divider-color: var(--custom-calendar-header-divider-color, transparent),
+      calendar-header-text-color: var(--custom-calendar-header-text-color, #49454f),
+      calendar-navigation-button-icon-color: var(
+          --custom-calendar-navigation-button-icon-color,
+          #49454f
+        ),
+      calendar-period-button-icon-color: var(--custom-calendar-period-button-icon-color, #49454f),
+      calendar-period-button-text-color: var(--custom-calendar-period-button-text-color, #49454f),
+      range-input-disabled-state-separator-color: var(
+          --custom-range-input-disabled-state-separator-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      range-input-disabled-state-text-color: var(
+          --custom-range-input-disabled-state-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      range-input-separator-color: var(--custom-range-input-separator-color, #1c1b1f),
+      toggle-active-state-icon-color: var(--custom-toggle-active-state-icon-color, #6750a4),
+      toggle-icon-color: var(--custom-toggle-icon-color, #49454f),
+      calendar-body-label-text-size: var(--custom-calendar-body-label-text-size, 14px),
+      calendar-body-label-text-weight: var(--custom-calendar-body-label-text-weight, 500),
+      calendar-header-text-size: var(--custom-calendar-header-text-size, 14px),
+      calendar-header-text-weight: var(--custom-calendar-header-text-weight, 500),
+      calendar-period-button-text-size: var(--custom-calendar-period-button-text-size, 14px),
+      calendar-period-button-text-weight: var(--custom-calendar-period-button-text-weight, 500),
+      calendar-text-font: var(--custom-calendar-text-font, Roboto, sans-serif),
+      calendar-text-size: var(--custom-calendar-text-size, 14px),
+    )
+  );
+
+  @include mat.dialog-overrides(
+    (
+      actions-alignment: var(--custom-actions-alignment, flex-end),
+      actions-padding: var(--custom-actions-padding, 16px),
+      container-elevation-shadow: var(--custom-container-elevation-shadow, 0),
+      container-max-width: var(--custom-container-max-width, 560px),
+      container-min-width: var(--custom-container-min-width, 280px),
+      container-shape: var(--custom-container-shape, 28px),
+      content-padding: var(--custom-content-padding, 20px),
+      headline-padding: var(--custom-headline-padding, 24px),
+      with-actions-content-padding: var(--custom-with-actions-content-padding, 20px),
+      container-color: var(--custom-container-color, #fffbfe),
+      subhead-color: var(--custom-subhead-color, #1c1b1f),
+      supporting-text-color: var(--custom-supporting-text-color, #49454f),
+      subhead-font: var(--custom-subhead-font, Roboto, sans-serif),
+      subhead-line-height: var(--custom-subhead-line-height, 32px),
+      subhead-size: var(--custom-subhead-size, 24px),
+      subhead-tracking: var(--custom-subhead-tracking, 0px),
+      subhead-weight: var(--custom-subhead-weight, 400),
+      supporting-text-font: var(--custom-supporting-text-font, Roboto, sans-serif),
+      supporting-text-line-height: var(--custom-supporting-text-line-height, 20px),
+      supporting-text-size: var(--custom-supporting-text-size, 14px),
+      supporting-text-tracking: var(--custom-supporting-text-tracking, 0.25px),
+      supporting-text-weight: var(--custom-supporting-text-weight, 400),
+    )
+  );
+
+  @include mat.divider-overrides(
+    (
+      width: var(--custom-width, 1px),
+      color: var(--custom-color, #cac4d0),
+    )
+  );
+
+  @include mat.expansion-overrides(
+    (
+      container-shape: var(--custom-container-shape, 12px),
+      header-indicator-display: var(--custom-header-indicator-display, inline-block),
+      legacy-header-indicator-display: var(--custom-legacy-header-indicator-display, none),
+      container-elevation-shadow: var(--custom-container-elevation-shadow, 2),
+      actions-divider-color: var(--custom-actions-divider-color, #79747e),
+      container-background-color: var(--custom-container-background-color, #fffbfe),
+      container-text-color: var(--custom-container-text-color, #ffffff),
+      header-description-color: var(--custom-header-description-color, #49454f),
+      header-disabled-state-text-color: var(
+          --custom-header-disabled-state-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      header-focus-state-layer-color: var(
+          --custom-header-focus-state-layer-color,
+          rgba(28, 27, 31, 0.12)
+        ),
+      header-hover-state-layer-color: var(
+          --custom-header-hover-state-layer-color,
+          rgba(28, 27, 31, 0.08)
+        ),
+      header-indicator-color: var(--custom-header-indicator-color, #49454f),
+      header-text-color: var(--custom-header-text-color, #ffffff),
+      container-text-font: var(--custom-container-text-font, Roboto, sans-serif),
+      container-text-line-height: var(--custom-container-text-line-height, 24px),
+      container-text-size: var(--custom-container-text-size, 16px),
+      container-text-tracking: var(--custom-container-text-tracking, 0.5px),
+      container-text-weight: var(--custom-container-text-weight, 400),
+      header-text-font: var(--custom-header-text-font, Roboto, sans-serif),
+      header-text-line-height: var(--custom-header-text-line-height, 24px),
+      header-text-size: var(--custom-header-text-size, 16px),
+      header-text-tracking: var(--custom-header-text-tracking, 0.15px),
+      header-text-weight: var(--custom-header-text-weight, 500),
+      header-collapsed-state-height: var(--custom-header-collapsed-state-height, 48px),
+      header-expanded-state-height: var(--custom-header-expanded-state-height, 64px),
+    )
+  );
+
+  @include mat.form-field-overrides(
+    (
+      filled-active-indicator-height: var(--custom-filled-active-indicator-height, 1px),
+      filled-focus-active-indicator-height: var(--custom-filled-focus-active-indicator-height, 2px),
+      filled-container-shape: var(--custom-filled-container-shape, 4px),
+      outlined-outline-width: var(--custom-outlined-outline-width, 1px),
+      outlined-focus-outline-width: var(--custom-outlined-focus-outline-width, 2px),
+      outlined-container-shape: var(--custom-outlined-container-shape, 4px),
+      disabled-input-text-placeholder-color: var(
+          --custom-disabled-input-text-placeholder-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      disabled-leading-icon-color: var(
+          --custom-disabled-leading-icon-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      disabled-select-arrow-color: var(
+          --custom-disabled-select-arrow-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      disabled-trailing-icon-color: var(
+          --custom-disabled-trailing-icon-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      enabled-select-arrow-color: var(--custom-enabled-select-arrow-color, #49454f),
+      error-focus-trailing-icon-color: var(--custom-error-focus-trailing-icon-color, #b3261e),
+      error-hover-trailing-icon-color: var(--custom-error-hover-trailing-icon-color, #410e0b),
+      error-text-color: var(--custom-error-text-color, #b3261e),
+      error-trailing-icon-color: var(--custom-error-trailing-icon-color, #b3261e),
+      filled-active-indicator-color: var(--custom-filled-active-indicator-color, #49454f),
+      filled-caret-color: var(--custom-filled-caret-color, #6750a4),
+      filled-container-color: var(--custom-filled-container-color, #e7e0ec),
+      filled-disabled-active-indicator-color: var(
+          --custom-filled-disabled-active-indicator-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      filled-disabled-container-color: var(
+          --custom-filled-disabled-container-color,
+          rgba(227, 227, 227, 0.04)
+        ),
+      filled-disabled-input-text-color: var(
+          --custom-filled-disabled-input-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      filled-disabled-label-text-color: var(
+          --custom-filled-disabled-label-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      filled-error-active-indicator-color: var(
+          --custom-filled-error-active-indicator-color,
+          #b3261e
+        ),
+      filled-error-caret-color: var(--custom-filled-error-caret-color, #b3261e),
+      filled-error-focus-active-indicator-color: var(
+          --custom-filled-error-focus-active-indicator-color,
+          #b3261e
+        ),
+      filled-error-focus-label-text-color: var(
+          --custom-filled-error-focus-label-text-color,
+          #b3261e
+        ),
+      filled-error-hover-active-indicator-color: var(
+          --custom-filled-error-hover-active-indicator-color,
+          #410e0b
+        ),
+      filled-error-hover-label-text-color: var(
+          --custom-filled-error-hover-label-text-color,
+          #410e0b
+        ),
+      filled-error-label-text-color: var(--custom-filled-error-label-text-color, #b3261e),
+      filled-focus-active-indicator-color: var(
+          --custom-filled-focus-active-indicator-color,
+          #6750a4
+        ),
+      filled-focus-label-text-color: var(--custom-filled-focus-label-text-color, #6750a4),
+      filled-hover-active-indicator-color: var(
+          --custom-filled-hover-active-indicator-color,
+          #1c1b1f
+        ),
+      filled-hover-label-text-color: var(--custom-filled-hover-label-text-color, #49454f),
+      filled-input-text-color: var(--custom-filled-input-text-color, #ffffff),
+      filled-input-text-placeholder-color: var(
+          --custom-filled-input-text-placeholder-color,
+          #49454f
+        ),
+      filled-label-text-color: var(--custom-filled-label-text-color, #49454f),
+      focus-select-arrow-color: var(--custom-focus-select-arrow-color, #6750a4),
+      focus-state-layer-opacity: var(--custom-focus-state-layer-opacity, 0),
+      hover-state-layer-opacity: var(--custom-hover-state-layer-opacity, 0.08),
+      leading-icon-color: var(--custom-leading-icon-color, #49454f),
+      outlined-caret-color: var(--custom-outlined-caret-color, #6750a4),
+      outlined-disabled-input-text-color: var(
+          --custom-outlined-disabled-input-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      outlined-disabled-label-text-color: var(
+          --custom-outlined-disabled-label-text-color,
+          rgba(227, 227, 227, 0.38)
+        ),
+      outlined-disabled-outline-color: var(
+          --custom-outlined-disabled-outline-color,
+          rgba(227, 227, 227, 0.12)
+        ),
+      outlined-error-caret-color: var(--custom-outlined-error-caret-color, #b3261e),
+      outlined-error-focus-label-text-color: var(
+          --custom-outlined-error-focus-label-text-color,
+          #b3261e
+        ),
+      outlined-error-focus-outline-color: var(--custom-outlined-error-focus-outline-color, #b3261e),
+      outlined-error-hover-label-text-color: var(
+          --custom-outlined-error-hover-label-text-color,
+          #410e0b
+        ),
+      outlined-error-hover-outline-color: var(--custom-outlined-error-hover-outline-color, #410e0b),
+      outlined-error-label-text-color: var(--custom-outlined-error-label-text-color, #b3261e),
+      outlined-error-outline-color: var(--custom-outlined-error-outline-color, #b3261e),
+      outlined-focus-label-text-color: var(--custom-outlined-focus-label-text-color, #6750a4),
+      outlined-focus-outline-color: var(--custom-outlined-focus-outline-color, #6750a4),
+      outlined-hover-label-text-color: var(--custom-outlined-hover-label-text-color, #ffffff),
+      outlined-hover-outline-color: var(--custom-outlined-hover-outline-color, #1c1b1f),
+      outlined-input-text-color: var(--custom-outlined-input-text-color, #ffffff),
+      outlined-input-text-placeholder-color: var(
+          --custom-outlined-input-text-placeholder-color,
+          #49454f
+        ),
+      outlined-label-text-color: var(--custom-outlined-label-text-color, #49454f),
+      outlined-outline-color: var(--custom-outlined-outline-color, #79747e),
+      select-disabled-option-text-color: var(
+          --custom-select-disabled-option-text-color,
+          rgba(28, 27, 31, 0.38)
+        ),
+      select-option-text-color: var(--custom-select-option-text-color, #ffffff),
+      state-layer-color: var(--custom-state-layer-color, #1c1b1f),
+      trailing-icon-color: var(--custom-trailing-icon-color, #49454f),
+      container-text-font: var(--custom-container-text-font, Roboto, sans-serif),
+      container-text-line-height: var(--custom-container-text-line-height, 24px),
+      container-text-size: var(--custom-container-text-size, 16px),
+      container-text-tracking: var(--custom-container-text-tracking, 0.5px),
+      container-text-weight: var(--custom-container-text-weight, 400),
+      subscript-text-font: var(--custom-subscript-text-font, Roboto, sans-serif),
+      subscript-text-line-height: var(--custom-subscript-text-line-height, 16px),
+      subscript-text-size: var(--custom-subscript-text-size, 12px),
+      subscript-text-tracking: var(--custom-subscript-text-tracking, 0.4px),
+      subscript-text-weight: var(--custom-subscript-text-weight, 400),
+      outlined-label-text-font: var(--custom-outlined-label-text-font, Roboto, sans-serif),
+      outlined-label-text-size: var(--custom-outlined-label-text-size, 16px),
+      outlined-label-text-tracking: var(--custom-outlined-label-text-tracking, 0.5px),
+      outlined-label-text-weight: var(--custom-outlined-label-text-weight, 400),
+      filled-label-text-font: var(--custom-filled-label-text-font, Roboto, sans-serif),
+      filled-label-text-size: var(--custom-filled-label-text-size, 16px),
+      filled-label-text-tracking: var(--custom-filled-label-text-tracking, 0.5px),
+      filled-label-text-weight: var(--custom-filled-label-text-weight, 400),
+      outlined-label-text-populated-size: var(--custom-outlined-label-text-populated-size, 12px),
+      container-height: var(--custom-container-height, 56px),
+      filled-label-display: var(--custom-filled-label-display, block),
+      container-vertical-padding: var(--custom-container-vertical-padding, 16px),
+      filled-with-label-container-padding-top: var(
+          --custom-filled-with-label-container-padding-top,
+          24px
+        ),
+      filled-with-label-container-padding-bottom: var(
+          --custom-filled-with-label-container-padding-bottom,
+          8px
+        ),
+    )
+  );
+
+  @include mat.grid-list-overrides(
+    (
+      tile-header-primary-text-size: var(--custom-tile-header-primary-text-size, 16px),
+      tile-header-secondary-text-size: var(--custom-tile-header-secondary-text-size, 14px),
+      tile-footer-primary-text-size: var(--custom-tile-footer-primary-text-size, 16px),
+      tile-footer-secondary-text-size: var(--custom-tile-footer-secondary-text-size, 14px),
+    )
+  );
+
+  @include mat.icon-overrides(
+    (
+      color: var(--custom-color, inherit),
+    )
+  );
+
+  @include mat.list-overrides(
+    (
+      active-indicator-color: var(--custom-active-indicator-color, #e8def8),
+      active-indicator-shape: var(--custom-active-indicator-shape, 9999px),
+      list-item-container-color: var(--custom-list-item-container-color, transparent),
+      list-item-container-shape: var(--custom-list-item-container-shape, 0px),
+      list-item-disabled-label-text-color: var(
+          --custom-list-item-disabled-label-text-color,
+          #1c1b1f
+        ),
+      list-item-disabled-label-text-opacity: var(
+          --custom-list-item-disabled-label-text-opacity,
+          0.3
+        ),
+      list-item-disabled-leading-icon-color: var(
+          --custom-list-item-disabled-leading-icon-color,
+          #1c1b1f
+        ),
+      list-item-disabled-leading-icon-opacity: var(
+          --custom-list-item-disabled-leading-icon-opacity,
+          0.38
+        ),
+      list-item-disabled-state-layer-color: var(
+          --custom-list-item-disabled-state-layer-color,
+          #1c1b1f
+        ),
+      list-item-disabled-state-layer-opacity: var(
+          --custom-list-item-disabled-state-layer-opacity,
+          0.12
+        ),
+      list-item-disabled-trailing-icon-color: var(
+          --custom-list-item-disabled-trailing-icon-color,
+          #1c1b1f
+        ),
+      list-item-disabled-trailing-icon-opacity: var(
+          --custom-list-item-disabled-trailing-icon-opacity,
+          0.38
+        ),
+      list-item-focus-label-text-color: var(--custom-list-item-focus-label-text-color, #ffffff),
+      list-item-focus-state-layer-color: var(--custom-list-item-focus-state-layer-color, #1c1b1f),
+      list-item-focus-state-layer-opacity: var(--custom-list-item-focus-state-layer-opacity, 0.12),
+      list-item-hover-label-text-color: var(--custom-list-item-hover-label-text-color, #ffffff),
+      list-item-hover-state-layer-color: var(--custom-list-item-hover-state-layer-color, #1c1b1f),
+      list-item-hover-state-layer-opacity: var(--custom-list-item-hover-state-layer-opacity, 0.08),
+      list-item-label-text-color: var(--custom-list-item-label-text-color, #ffffff),
+      list-item-leading-avatar-color: var(--custom-list-item-leading-avatar-color, #eaddff),
+      list-item-leading-avatar-shape: var(--custom-list-item-leading-avatar-shape, 9999px),
+      list-item-leading-avatar-size: var(--custom-list-item-leading-avatar-size, 40px),
+      list-item-leading-icon-color: var(--custom-list-item-leading-icon-color, #49454f),
+      list-item-leading-icon-size: var(--custom-list-item-leading-icon-size, 24px),
+      list-item-selected-trailing-icon-color: var(
+          --custom-list-item-selected-trailing-icon-color,
+          #6750a4
+        ),
+      list-item-supporting-text-color: var(--custom-list-item-supporting-text-color, #49454f),
+      list-item-trailing-icon-color: var(--custom-list-item-trailing-icon-color, #49454f),
+      list-item-trailing-icon-size: var(--custom-list-item-trailing-icon-size, 24px),
+      list-item-trailing-supporting-text-color: var(
+          --custom-list-item-trailing-supporting-text-color,
+          #49454f
+        ),
+      list-item-selected-container-color: var(
+          --custom-list-item-selected-container-color,
+          transparent
+        ),
+      list-item-hover-leading-icon-color: var(--custom-list-item-hover-leading-icon-color, #1c1b1f),
+      list-item-hover-trailing-icon-color: var(
+          --custom-list-item-hover-trailing-icon-color,
+          #1c1b1f
+        ),
+      list-item-label-text-font: var(--custom-list-item-label-text-font, Roboto, sans-serif),
+      list-item-label-text-line-height: var(--custom-list-item-label-text-line-height, 24px),
+      list-item-label-text-size: var(--custom-list-item-label-text-size, 16px),
+      list-item-label-text-tracking: var(--custom-list-item-label-text-tracking, 0.5px),
+      list-item-label-text-weight: var(--custom-list-item-label-text-weight, 400),
+      list-item-supporting-text-font: var(
+          --custom-list-item-supporting-text-font,
+          Roboto,
+          sans-serif
+        ),
+      list-item-supporting-text-line-height: var(
+          --custom-list-item-supporting-text-line-height,
+          20px
+        ),
+      list-item-supporting-text-size: var(--custom-list-item-supporting-text-size, 14px),
+      list-item-supporting-text-tracking: var(--custom-list-item-supporting-text-tracking, 0.25px),
+      list-item-supporting-text-weight: var(--custom-list-item-supporting-text-weight, 400),
+      list-item-trailing-supporting-text-font: var(
+          --custom-list-item-trailing-supporting-text-font,
+          Roboto,
+          sans-serif
+        ),
+      list-item-trailing-supporting-text-line-height: var(
+          --custom-list-item-trailing-supporting-text-line-height,
+          16px
+        ),
+      list-item-trailing-supporting-text-size: var(
+          --custom-list-item-trailing-supporting-text-size,
+          11px
+        ),
+      list-item-trailing-supporting-text-tracking: var(
+          --custom-list-item-trailing-supporting-text-tracking,
+          0.5px
+        ),
+      list-item-trailing-supporting-text-weight: var(
+          --custom-list-item-trailing-supporting-text-weight,
+          500
+        ),
+      list-item-leading-icon-start-space: var(--custom-list-item-leading-icon-start-space, 16px),
+      list-item-leading-icon-end-space: var(--custom-list-item-leading-icon-end-space, 16px),
+      list-item-one-line-container-height: var(--custom-list-item-one-line-container-height, 48px),
+      list-item-two-line-container-height: var(--custom-list-item-two-line-container-height, 64px),
+      list-item-three-line-container-height: var(
+          --custom-list-item-three-line-container-height,
+          88px
+        ),
+    )
+  );
+
+  @include mat.menu-overrides(
+    (
+      divider-bottom-spacing: var(--custom-divider-bottom-spacing, 8px),
+      divider-top-spacing: var(--custom-divider-top-spacing, 8px),
+      item-icon-size: var(--custom-item-icon-size, 24px),
+      item-spacing: var(--custom-item-spacing, 12px),
+      item-leading-spacing: var(--custom-item-leading-spacing, 12px),
+      item-trailing-spacing: var(--custom-item-trailing-spacing, 12px),
+      item-with-icon-leading-spacing: var(--custom-item-with-icon-leading-spacing, 12px),
+      item-with-icon-trailing-spacing: var(--custom-item-with-icon-trailing-spacing, 12px),
+      container-shape: var(--custom-container-shape, 4px),
+      divider-color: var(--custom-divider-color, #e7e0ec),
+      item-label-text-color: var(--custom-item-label-text-color, #ffffff),
+      item-icon-color: var(--custom-item-icon-color, #49454f),
+      item-hover-state-layer-color: var(
+          --custom-item-hover-state-layer-color,
+          rgba(28, 27, 31, 0.08)
+        ),
+      item-focus-state-layer-color: var(
+          --custom-item-focus-state-layer-color,
+          rgba(28, 27, 31, 0.12)
+        ),
+      container-color: var(--custom-container-color, #f3edf7),
+      container-elevation-shadow: var(--custom-container-elevation-shadow, 2),
+      item-label-text-font: var(--custom-item-label-text-font, Roboto, sans-serif),
+      item-label-text-line-height: var(--custom-item-label-text-line-height, 20px),
+      item-label-text-size: var(--custom-item-label-text-size, 14px),
+      item-label-text-tracking: var(--custom-item-label-text-tracking, 0.1px),
+      item-label-text-weight: var(--custom-item-label-text-weight, 500),
+    )
+  );
+
+  @include mat.paginator-overrides(
+    (
+      page-size-select-width: var(--custom-page-size-select-width, 84px),
+      page-size-select-touch-target-height: var(--custom-page-size-select-touch-target-height, 40px),
+      container-text-color: var(--custom-container-text-color, #ffffff),
+      container-background-color: var(--custom-container-background-color, #fffbfe),
+      disabled-icon-color: var(--custom-disabled-icon-color, rgba(227, 227, 227, 0.38)),
+      enabled-icon-color: var(--custom-enabled-icon-color, #49454f),
+      container-text-font: var(--custom-container-text-font, Roboto, sans-serif),
+      container-text-line-height: var(--custom-container-text-line-height, 16px),
+      container-text-size: var(--custom-container-text-size, 12px),
+      container-text-tracking: var(--custom-container-text-tracking, 0.4px),
+      container-text-weight: var(--custom-container-text-weight, 400),
+      select-trigger-text-size: var(--custom-select-trigger-text-size, 12px),
+      container-size: var(--custom-container-size, 56px),
+      form-field-container-height: var(--custom-form-field-container-height, 40px),
+      form-field-container-vertical-padding: var(
+          --custom-form-field-container-vertical-padding,
+          8px
+        ),
+      touch-target-display: var(--custom-touch-target-display, block),
+    )
+  );
+
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-height: var(--custom-active-indicator-height, 4px),
+      track-height: var(--custom-track-height, 4px),
+      track-shape: var(--custom-track-shape, 0px),
+      active-indicator-color: var(--custom-active-indicator-color, #6750a4),
+      track-color: var(--custom-track-color, #e7e0ec),
+    )
+  );
+
+  @include mat.progress-spinner-overrides(
+    (
+      size: var(--custom-size, 48px),
+      active-indicator-width: var(--custom-active-indicator-width, 4px),
+      active-indicator-color: var(--custom-active-indicator-color, #6750a4),
+    )
+  );
+
+  @include mat.radio-overrides(
+    (
+      disabled-unselected-icon-opacity: var(--custom-disabled-unselected-icon-opacity, 0.38),
+      disabled-selected-icon-opacity: var(--custom-disabled-selected-icon-opacity, 0.38),
+      touch-target-size: var(--custom-touch-target-size, 48px),
+      checked-ripple-color: var(--custom-checked-ripple-color, #6750a4),
+      disabled-label-color: var(--custom-disabled-label-color, #1c1b1f),
+      disabled-selected-icon-color: var(--custom-disabled-selected-icon-color, #1c1b1f),
+      disabled-unselected-icon-color: var(--custom-disabled-unselected-icon-color, #1c1b1f),
+      label-text-color: var(--custom-label-text-color, #ffffff),
+      ripple-color: var(--custom-ripple-color, #1c1b1f),
+      selected-focus-icon-color: var(--custom-selected-focus-icon-color, #6750a4),
+      selected-hover-icon-color: var(--custom-selected-hover-icon-color, #6750a4),
+      selected-icon-color: var(--custom-selected-icon-color, #6750a4),
+      selected-pressed-icon-color: var(--custom-selected-pressed-icon-color, #6750a4),
+      unselected-focus-icon-color: var(--custom-unselected-focus-icon-color, #1c1b1f),
+      unselected-hover-icon-color: var(--custom-unselected-hover-icon-color, #1c1b1f),
+      unselected-icon-color: var(--custom-unselected-icon-color, #49454f),
+      unselected-pressed-icon-color: var(--custom-unselected-pressed-icon-color, #1c1b1f),
+      label-text-font: var(--custom-label-text-font, Roboto, sans-serif),
+      label-text-line-height: var(--custom-label-text-line-height, 20px),
+      label-text-size: var(--custom-label-text-size, 14px),
+      label-text-tracking: var(--custom-label-text-tracking, 0.25px),
+      label-text-weight: var(--custom-label-text-weight, 400),
+      touch-target-display: var(--custom-touch-target-display, block),
+      state-layer-size: var(--custom-state-layer-size, 40px),
+    )
+  );
+
+  @include mat.select-overrides(
+    (
+      container-elevation-shadow: var(
+          --custom-container-elevation-shadow,
+          0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+          0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+          0px 1px 5px 0px rgba(0, 0, 0, 0.12)
+        ),
+      panel-background-color: var(--custom-panel-background-color, #ece6f0),
+      enabled-trigger-text-color: var(--custom-enabled-trigger-text-color, #ffffff),
+      disabled-trigger-text-color: var(--custom-disabled-trigger-text-color, #ffffff),
+      placeholder-text-color: var(--custom-placeholder-text-color, #49454f),
+      enabled-arrow-color: var(--custom-enabled-arrow-color, #49454f),
+      disabled-arrow-color: var(--custom-disabled-arrow-color, #1c1b1f),
+      focused-arrow-color: var(--custom-focused-arrow-color, #6750a4),
+      invalid-arrow-color: var(--custom-invalid-arrow-color, #b3261e),
+      trigger-text-font: var(--custom-trigger-text-font, Roboto, sans-serif),
+      trigger-text-line-height: var(--custom-trigger-text-line-height, 24px),
+      trigger-text-size: var(--custom-trigger-text-size, 16px),
+      trigger-text-tracking: var(--custom-trigger-text-tracking, 0.5px),
+      trigger-text-weight: var(--custom-trigger-text-weight, 400),
+      arrow-transform: var(--custom-arrow-transform, translateY(-8px)),
+    )
+  );
+
+  @include mat.sidenav-overrides(
+    (
+      container-shape: var(--custom-container-shape, 16px),
+      container-elevation-shadow: var(--custom-container-elevation-shadow, none),
+      container-width: var(--custom-container-width, 256px),
+      container-divider-color: var(--custom-container-divider-color, #cac4d0),
+      container-background-color: var(--custom-container-background-color, #fffbfe),
+      container-text-color: var(--custom-container-text-color, #49454f),
+      content-background-color: var(--custom-content-background-color, #fffbfe),
+      content-text-color: var(--custom-content-text-color, #ffffff),
+      scrim-color: var(--custom-scrim-color, #000000),
+    )
+  );
+
+  @include mat.slide-toggle-overrides(
+    (
+      disabled-selected-handle-opacity: var(--custom-disabled-selected-handle-opacity, 1),
+      disabled-selected-icon-opacity: var(--custom-disabled-selected-icon-opacity, 0.38),
+      disabled-track-opacity: var(--custom-disabled-track-opacity, 0.12),
+      disabled-unselected-handle-opacity: var(--custom-disabled-unselected-handle-opacity, 0.38),
+      disabled-unselected-icon-opacity: var(--custom-disabled-unselected-icon-opacity, 0.38),
+      disabled-unselected-track-outline-width: var(
+          --custom-disabled-unselected-track-outline-width,
+          2px
+        ),
+      handle-shape: var(--custom-handle-shape, 9999px),
+      hidden-track-opacity: var(--custom-hidden-track-opacity, 0),
+      pressed-handle-size: var(--custom-pressed-handle-size, 28px),
+      selected-handle-size: var(--custom-selected-handle-size, 24px),
+      selected-icon-size: var(--custom-selected-icon-size, 16px),
+      selected-track-outline-width: var(--custom-selected-track-outline-width, 2px),
+      state-layer-size: var(--custom-state-layer-size, 40px),
+      track-height: var(--custom-track-height, 32px),
+      track-outline-width: var(--custom-track-outline-width, 2px),
+      track-shape: var(--custom-track-shape, 9999px),
+      track-width: var(--custom-track-width, 52px),
+      unselected-handle-size: var(--custom-unselected-handle-size, 16px),
+      unselected-icon-size: var(--custom-unselected-icon-size, 16px),
+      visible-track-opacity: var(--custom-visible-track-opacity, 1),
+      with-icon-handle-size: var(--custom-with-icon-handle-size, 24px),
+      touch-target-size: var(--custom-touch-target-size, 48px),
+      disabled-label-text-color: var(--custom-disabled-label-text-color, #ffffff),
+      disabled-selected-handle-color: var(--custom-disabled-selected-handle-color, #fffbfe),
+      disabled-selected-icon-color: var(--custom-disabled-selected-icon-color, #1c1b1f),
+      disabled-selected-track-color: var(--custom-disabled-selected-track-color, #1c1b1f),
+      disabled-unselected-handle-color: var(--custom-disabled-unselected-handle-color, #1c1b1f),
+      disabled-unselected-icon-color: var(--custom-disabled-unselected-icon-color, #e7e0ec),
+      disabled-unselected-track-color: var(--custom-disabled-unselected-track-color, #e7e0ec),
+      disabled-unselected-track-outline-color: var(
+          --custom-disabled-unselected-track-outline-color,
+          #1c1b1f
+        ),
+      label-text-color: var(--custom-label-text-color, #ffffff),
+      selected-focus-handle-color: var(--custom-selected-focus-handle-color, #eaddff),
+      selected-focus-state-layer-color: var(--custom-selected-focus-state-layer-color, #6750a4),
+      selected-focus-track-color: var(--custom-selected-focus-track-color, #6750a4),
+      selected-handle-color: var(--custom-selected-handle-color, #ffffff),
+      selected-hover-handle-color: var(--custom-selected-hover-handle-color, #eaddff),
+      selected-hover-state-layer-color: var(--custom-selected-hover-state-layer-color, #6750a4),
+      selected-hover-track-color: var(--custom-selected-hover-track-color, #6750a4),
+      selected-icon-color: var(--custom-selected-icon-color, #21005d),
+      selected-pressed-handle-color: var(--custom-selected-pressed-handle-color, #eaddff),
+      selected-pressed-state-layer-color: var(--custom-selected-pressed-state-layer-color, #6750a4),
+      selected-pressed-track-color: var(--custom-selected-pressed-track-color, #6750a4),
+      selected-track-color: var(--custom-selected-track-color, #6750a4),
+      track-outline-color: var(--custom-track-outline-color, #79747e),
+      unselected-focus-handle-color: var(--custom-unselected-focus-handle-color, #49454f),
+      unselected-focus-state-layer-color: var(--custom-unselected-focus-state-layer-color, #1c1b1f),
+      unselected-focus-track-color: var(--custom-unselected-focus-track-color, #e7e0ec),
+      unselected-handle-color: var(--custom-unselected-handle-color, #79747e),
+      unselected-hover-handle-color: var(--custom-unselected-hover-handle-color, #49454f),
+      unselected-hover-state-layer-color: var(--custom-unselected-hover-state-layer-color, #1c1b1f),
+      unselected-hover-track-color: var(--custom-unselected-hover-track-color, #e7e0ec),
+      unselected-icon-color: var(--custom-unselected-icon-color, #e7e0ec),
+      unselected-pressed-handle-color: var(--custom-unselected-pressed-handle-color, #49454f),
+      unselected-pressed-state-layer-color: var(
+          --custom-unselected-pressed-state-layer-color,
+          #1c1b1f
+        ),
+      unselected-pressed-track-color: var(--custom-unselected-pressed-track-color, #e7e0ec),
+      unselected-track-color: var(--custom-unselected-track-color, #e7e0ec),
+      label-text-font: var(--custom-label-text-font, Roboto, sans-serif),
+      label-text-line-height: var(--custom-label-text-line-height, 20px),
+      label-text-size: var(--custom-label-text-size, 14px),
+      label-text-tracking: var(--custom-label-text-tracking, 0.25px),
+      label-text-weight: var(--custom-label-text-weight, 400),
+      touch-target-display: var(--custom-touch-target-display, block),
+    )
+  );
+
+  @include mat.slider-overrides(
+    (
+      active-track-height: var(--custom-active-track-height, 4px),
+      handle-height: var(--custom-handle-height, 20px),
+      handle-width: var(--custom-handle-width, 20px),
+      inactive-track-height: var(--custom-inactive-track-height, 4px),
+      with-overlap-handle-outline-width: var(--custom-with-overlap-handle-outline-width, 1px),
+      with-tick-marks-active-container-opacity: var(
+          --custom-with-tick-marks-active-container-opacity,
+          1
+        ),
+      with-tick-marks-container-size: var(--custom-with-tick-marks-container-size, 2px),
+      with-tick-marks-inactive-container-opacity: var(
+          --custom-with-tick-marks-inactive-container-opacity,
+          1
+        ),
+      value-indicator-opacity: var(--custom-value-indicator-opacity, 1),
+      value-indicator-border-radius: var(--custom-value-indicator-border-radius, 4px),
+      value-indicator-width: var(--custom-value-indicator-width, 28px),
+      value-indicator-height: var(--custom-value-indicator-height, 28px),
+      value-indicator-padding: var(--custom-value-indicator-padding, 0px),
+      active-track-color: var(--custom-active-track-color, #6750a4),
+      active-track-shape: var(--custom-active-track-shape, 9999px),
+      disabled-active-track-color: var(--custom-disabled-active-track-color, #1c1b1f),
+      disabled-handle-color: var(--custom-disabled-handle-color, #1c1b1f),
+      disabled-inactive-track-color: var(--custom-disabled-inactive-track-color, #1c1b1f),
+      focus-handle-color: var(--custom-focus-handle-color, #6750a4),
+      focus-state-layer-color: var(--custom-focus-state-layer-color, #6750a4),
+      handle-color: var(--custom-handle-color, #6750a4),
+      handle-shape: var(--custom-handle-shape, 9999px),
+      hover-handle-color: var(--custom-hover-handle-color, #6750a4),
+      hover-state-layer-color: var(--custom-hover-state-layer-color, #6750a4),
+      inactive-track-color: var(--custom-inactive-track-color, #e7e0ec),
+      inactive-track-shape: var(--custom-inactive-track-shape, 9999px),
+      label-container-color: var(--custom-label-container-color, #6750a4),
+      label-label-text-color: var(--custom-label-label-text-color, #ffffff),
+      ripple-color: var(--custom-ripple-color, #6750a4),
+      with-overlap-handle-outline-color: var(--custom-with-overlap-handle-outline-color, #ffffff),
+      with-tick-marks-active-container-color: var(
+          --custom-with-tick-marks-active-container-color,
+          #ffffff
+        ),
+      with-tick-marks-container-shape: var(--custom-with-tick-marks-container-shape, 9999px),
+      with-tick-marks-disabled-container-color: var(
+          --custom-with-tick-marks-disabled-container-color,
+          #1c1b1f
+        ),
+      with-tick-marks-inactive-container-color: var(
+          --custom-with-tick-marks-inactive-container-color,
+          #49454f
+        ),
+      label-label-text-font: var(--custom-label-label-text-font, Roboto, sans-serif),
+      label-label-text-line-height: var(--custom-label-label-text-line-height, 16px),
+      label-label-text-size: var(--custom-label-label-text-size, 12px),
+      label-label-text-tracking: var(--custom-label-label-text-tracking, 0.5px),
+      label-label-text-weight: var(--custom-label-label-text-weight, 500),
+    )
+  );
+
+  @include mat.snack-bar-overrides(
+    (
+      container-shape: var(--custom-container-shape, 4px),
+      button-color: var(--custom-button-color, #d0bcff),
+      container-color: var(--custom-container-color, #313033),
+      supporting-text-color: var(--custom-supporting-text-color, #f4eff4),
+      supporting-text-font: var(--custom-supporting-text-font, Roboto, sans-serif),
+      supporting-text-line-height: var(--custom-supporting-text-line-height, 20px),
+      supporting-text-size: var(--custom-supporting-text-size, 14px),
+      supporting-text-weight: var(--custom-supporting-text-weight, 400),
+    )
+  );
+
+  @include mat.sort-overrides(
+    (
+      arrow-color: var(--custom-arrow-color, #1c1b1f),
+    )
+  );
+
+  @include mat.stepper-overrides(
+    (
+      header-error-state-icon-background-color: var(
+          --custom-header-error-state-icon-background-color,
+          #ffffff
+        ),
+      header-focus-state-layer-shape: var(--custom-header-focus-state-layer-shape, 12px),
+      header-hover-state-layer-shape: var(--custom-header-hover-state-layer-shape, 12px),
+      container-color: var(--custom-container-color, #fffbfe),
+      header-done-state-icon-background-color: var(
+          --custom-header-done-state-icon-background-color,
+          #6750a4
+        ),
+      header-done-state-icon-foreground-color: var(
+          --custom-header-done-state-icon-foreground-color,
+          #ffffff
+        ),
+      header-edit-state-icon-background-color: var(
+          --custom-header-edit-state-icon-background-color,
+          #6750a4
+        ),
+      header-edit-state-icon-foreground-color: var(
+          --custom-header-edit-state-icon-foreground-color,
+          #ffffff
+        ),
+      header-error-state-icon-foreground-color: var(
+          --custom-header-error-state-icon-foreground-color,
+          #b3261e
+        ),
+      header-error-state-label-text-color: var(
+          --custom-header-error-state-label-text-color,
+          #b3261e
+        ),
+      header-focus-state-layer-color: var(--custom-header-focus-state-layer-color, #1c1b1f),
+      header-hover-state-layer-color: var(--custom-header-hover-state-layer-color, #1c1b1f),
+      header-icon-background-color: var(--custom-header-icon-background-color, #49454f),
+      header-icon-foreground-color: var(--custom-header-icon-foreground-color, #fffbfe),
+      header-label-text-color: var(--custom-header-label-text-color, #49454f),
+      header-optional-label-text-color: var(--custom-header-optional-label-text-color, #49454f),
+      header-selected-state-icon-background-color: var(
+          --custom-header-selected-state-icon-background-color,
+          #6750a4
+        ),
+      header-selected-state-icon-foreground-color: var(
+          --custom-header-selected-state-icon-foreground-color,
+          #ffffff
+        ),
+      header-selected-state-label-text-color: var(
+          --custom-header-selected-state-label-text-color,
+          #49454f
+        ),
+      line-color: var(--custom-line-color, #79747e),
+      container-text-font: var(--custom-container-text-font, Roboto, sans-serif),
+      header-label-text-font: var(--custom-header-label-text-font, Roboto, sans-serif),
+      header-label-text-size: var(--custom-header-label-text-size, 14px),
+      header-label-text-weight: var(--custom-header-label-text-weight, 500),
+      header-error-state-label-text-size: var(--custom-header-error-state-label-text-size, 14px),
+      header-selected-state-label-text-size: var(
+          --custom-header-selected-state-label-text-size,
+          14px
+        ),
+      header-selected-state-label-text-weight: var(
+          --custom-header-selected-state-label-text-weight,
+          500
+        ),
+      header-height: var(--custom-header-height, 72px),
+    )
+  );
+
+  @include mat.table-overrides(
+    (
+      row-item-outline-width: var(--custom-row-item-outline-width, 1px),
+      background-color: var(--custom-background-color, #fffbfe),
+      header-headline-color: var(--custom-header-headline-color, #1c1b1f),
+      row-item-label-text-color: var(--custom-row-item-label-text-color, #ffffff),
+      row-item-outline-color: var(--custom-row-item-outline-color, #79747e),
+      header-headline-font: var(--custom-header-headline-font, Roboto, sans-serif),
+      header-headline-line-height: var(--custom-header-headline-line-height, 20px),
+      header-headline-size: var(--custom-header-headline-size, 14px),
+      header-headline-tracking: var(--custom-header-headline-tracking, 0.1px),
+      header-headline-weight: var(--custom-header-headline-weight, 500),
+      row-item-label-text-font: var(--custom-row-item-label-text-font, Roboto, sans-serif),
+      row-item-label-text-line-height: var(--custom-row-item-label-text-line-height, 20px),
+      row-item-label-text-size: var(--custom-row-item-label-text-size, 14px),
+      row-item-label-text-tracking: var(--custom-row-item-label-text-tracking, 0.25px),
+      row-item-label-text-weight: var(--custom-row-item-label-text-weight, 400),
+      footer-supporting-text-font: var(--custom-footer-supporting-text-font, Roboto, sans-serif),
+      footer-supporting-text-line-height: var(--custom-footer-supporting-text-line-height, 20px),
+      footer-supporting-text-size: var(--custom-footer-supporting-text-size, 14px),
+      footer-supporting-text-tracking: var(--custom-footer-supporting-text-tracking, 0.25px),
+      footer-supporting-text-weight: var(--custom-footer-supporting-text-weight, 400),
+      header-container-height: var(--custom-header-container-height, 56px),
+      footer-container-height: var(--custom-footer-container-height, 52px),
+      row-item-container-height: var(--custom-row-item-container-height, 52px),
+    )
+  );
+
+  @include mat.tabs-overrides(
+    (
+      active-indicator-height: var(--custom-active-indicator-height, 2px),
+      active-indicator-shape: var(--custom-active-indicator-shape, 0px),
+      divider-height: var(--custom-divider-height, 1px),
+      active-focus-indicator-color: var(--custom-active-focus-indicator-color, #6750a4),
+      active-focus-label-text-color: var(--custom-active-focus-label-text-color, #ffffff),
+      active-hover-indicator-color: var(--custom-active-hover-indicator-color, #6750a4),
+      active-hover-label-text-color: var(--custom-active-hover-label-text-color, #ffffff),
+      active-indicator-color: var(--custom-active-indicator-color, #6750a4),
+      active-label-text-color: var(--custom-active-label-text-color, #ffffff),
+      active-ripple-color: var(--custom-active-ripple-color, #1c1b1f),
+      divider-color: var(--custom-divider-color, #e7e0ec),
+      inactive-focus-label-text-color: var(--custom-inactive-focus-label-text-color, #ffffff),
+      inactive-hover-label-text-color: var(--custom-inactive-hover-label-text-color, #ffffff),
+      inactive-label-text-color: var(--custom-inactive-label-text-color, #ffffff),
+      inactive-ripple-color: var(--custom-inactive-ripple-color, #1c1b1f),
+      pagination-icon-color: var(--custom-pagination-icon-color, #1c1b1f),
+      disabled-ripple-color: var(--custom-disabled-ripple-color, #49454f),
+      background-color: var(--custom-background-color, #fffbfe),
+      foreground-color: var(--custom-foreground-color, #1c1b1f),
+      label-text-font: var(--custom-label-text-font, Roboto, sans-serif),
+      label-text-line-height: var(--custom-label-text-line-height, 20px),
+      label-text-size: var(--custom-label-text-size, 14px),
+      label-text-tracking: var(--custom-label-text-tracking, 0.1px),
+      label-text-weight: var(--custom-label-text-weight, 500),
+      container-height: var(--custom-container-height, 48px),
+    )
+  );
+
+  @include mat.timepicker-overrides(
+    (
+      container-shape: var(--custom-container-shape, 4px),
+      container-background-color: var(--custom-container-background-color, #ece6f0),
+      container-elevation-shadow: var(
+          --custom-container-elevation-shadow,
+          0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+          0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+          0px 1px 5px 0px rgba(0, 0, 0, 0.12)
+        ),
+    )
+  );
+
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: var(--custom-container-background-color, #fffbfe),
+      container-text-color: var(--custom-container-text-color, #ffffff),
+      title-text-font: var(--custom-title-text-font, Roboto, sans-serif),
+      title-text-line-height: var(--custom-title-text-line-height, 28px),
+      title-text-size: var(--custom-title-text-size, 22px),
+      title-text-tracking: var(--custom-title-text-tracking, 0px),
+      title-text-weight: var(--custom-title-text-weight, 400),
+      standard-height: var(--custom-standard-height, 64px),
+      mobile-height: var(--custom-mobile-height, 56px),
+    )
+  );
+
+  @include mat.tooltip-overrides(
+    (
+      container-color: var(--custom-container-color, #313033),
+      container-shape: var(--custom-container-shape, 4px),
+      supporting-text-color: var(--custom-supporting-text-color, #f4eff4),
+      supporting-text-font: var(--custom-supporting-text-font, Roboto, sans-serif),
+      supporting-text-line-height: var(--custom-supporting-text-line-height, 16px),
+      supporting-text-size: var(--custom-supporting-text-size, 12px),
+      supporting-text-tracking: var(--custom-supporting-text-tracking, 0.4px),
+      supporting-text-weight: var(--custom-supporting-text-weight, 400),
+    )
+  );
+
+  @include mat.tree-overrides(
+    (
+      container-background-color: var(--custom-container-background-color, #fffbfe),
+      node-text-color: var(--custom-node-text-color, #ffffff),
+      node-text-font: var(--custom-node-text-font, Roboto, sans-serif),
+      node-text-size: var(--custom-node-text-size, 16px),
+      node-text-weight: var(--custom-node-text-weight, 400),
+      node-min-height: var(--custom-node-min-height, 48px),
+    )
+  );
+}
